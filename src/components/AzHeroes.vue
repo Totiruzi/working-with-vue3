@@ -2,7 +2,7 @@
   <div class="m-auto">
     <h1 class="text-2xl text-center">Az Heros {{herosCount}}</h1>
     <ul>
-      <li class="flex justify-between" v-for="(hero, index) in azHeros" :key="hero.nmae">
+      <li class="flex justify-between" v-for="(hero, index) in azHeros" :key="hero.name">
         <div>{{hero.name}}</div>
         <button v-on:click="remove(index)">x</button>
       </li>
@@ -16,11 +16,6 @@
 
 <script>
 export default {
-  // computed: {
-  //   herosCount() {
-  //     return this.azHerors.length
-  //   }
-  // }
   data() {
     return {
       azHeros: [
@@ -40,7 +35,7 @@ export default {
   methods: {
     addHero() {
       if (this.newHero !== "") {
-        this.azHeros.unshit({name: this.newHero})
+        this.azHeros.unshift({name: this.newHero})
         this.newHero = '';
       }
     },
