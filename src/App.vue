@@ -1,13 +1,17 @@
 <template>
-<h1 class="text-center">Az Herors</h1>
+<AppHeader />
+<div class="w-full flex"><AzHeros /></div>
 </template>
 
 <script>
-
+import AppHeader from './components/AppHeader'
+import AzHeros from './components/AzHeroes'
 export default {
   name: 'App',
   components: {
-  }
+    AppHeader,
+    AzHeros
+  }, 
 }
 </script>
 
