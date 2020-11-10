@@ -1,6 +1,7 @@
 <template>
 <AppHeader />
 <div class="w-full flex">
+  <router-view></router-view>
 <!--  <AzHeros /> -->
 <Calendar />
 </div>
