@@ -17,8 +17,9 @@ export default {
         {title: "Az Heros", to: "/az-heros"},
         {title: "Calendar", to: "/calendar"},
         {title: "Markdown", to: "/markdown"},
-        {title: "Slider Carousel", to: "/slider"},
-        {title: "Calculator", to: "/calculator"}
+        {title: "Slider", to: "/carousel-slider"},
+        {title: "Calculator", to: "/calculator"},
+        {title: "Modal", to: "/reusable-modal"}
       ]
     }
   },
