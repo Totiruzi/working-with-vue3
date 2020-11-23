@@ -5,28 +5,18 @@
     <article class="w-1/2 border">
       <textarea class="w-full h-full" :value="text" @input="update" ref="markedownTextAreaRef"></textarea>
     </article>
-    <article class="w-1/2 border bg-gray-100" v-html="markedText"></article>
+    <article class="w-1/2 border bg-gray-100 break-words"  v-html="markedText"></article>
   </section>
 </div>
 </template>
 
 <script>
 import marked from "marked";
-import debounce from '../utilities/mixins/debounce'
+import useDebounce from '../utilities/composition/useDebounce'
+// import debounce from '../utilities/mixins/debounce'
 export default {
-  // beforeCreate() {
-  //   console.log('Before Create')
-  // },
-  // created() {
-  //   console.log('Created')
-  // },
-  // beforeMount() {
-  //   console.log('Before Mount')
-  // },
-  // mounted() {
-  //   console.log('Mounted')
-  // },
-  mixins: [debounce],
+  setup(){
+  },
   data() {
     return {
       text: "" 
@@ -34,6 +24,7 @@ export default {
   },
 
   mounted() {
+      this.debounce = useDebounce()
     this.$refs.markedownTextAreaRef.focus()
   },
 
@@ -45,7 +36,7 @@ export default {
   methods: {
     update(e) {
       const task = () =>  (this.text = e.target.value);
-      this.debounce(task, 500)
+      this. debounce(task, 500)
     }
   }
 }

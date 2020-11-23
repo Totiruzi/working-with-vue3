@@ -3,7 +3,14 @@
   <div class="absolute inset-0">
     <div class="flex h-full">
       <div class="m-auto bg-white p-2 rounded shadow z-30 w-1/3">
-        <div class="border p-2"></div>
+        <div class="border p-2">
+          <h1 class="text-2xl">
+            <slot name="title"></slot>
+          </h1>
+          <main>
+            <slot name="body"></slot>
+          </main>
+        </div>
       </div>
     </div>
   </div>        

@@ -6,6 +6,7 @@ import Markdowm from './pages/Markdowm.vue';
 import Slider from './pages/Slider.vue';
 import Calculator from './pages/Calculator.vue';
 import ReusableModal from './pages/ReusableModal.vue';
+import Chat from './pages/Chat.vue'
 
 
 const routes = [
@@ -15,7 +16,8 @@ const routes = [
   {path: '/markdown', component: Markdowm},
   {path: '/carousel-slider', component: Slider},
   {path: '/calculator', component: Calculator},
-  {path: '/reusable-modal', component: ReusableModal}
+  {path: '/reusable-modal', component: ReusableModal},
+  {path: '/chat', component: Chat}
 ]
 const router = createRouter({
   history: createWebHistory(),
