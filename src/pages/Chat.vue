@@ -1,19 +1,52 @@
 <template>
-  Chats
+  <section class="flex w-full">
+    <div class="m-auto">
+      <h1 class="text-center text-2xl">Real Time Chat</h1>
+      <div class="border rounded-lg">
+        <div class="h-64 p-2">
+          <div  class="w-full" v-for="chat in state.chats" :key="chat.message"
+          :class="chat.userId === state.userId ? 'text-right': '' ">
+            {{chat.message}}
+          </div>
+        </div>
+        <div class="h-8 p-2">
+          <input placeholder="Start Typing ...." class="p-1 border rounded shadow" v-model="state.message" @keypress.enter="addMessage"/>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { onMounted, reactive } from 'vue'
 import firebase from '../utilities/firebase'
 export default {
 setup() {
-  onMounted(async() => {
+  const state = reactive({
+    chats: {},
+    message: '',
+    collection: null,
+    userId: null
+  })
+  onMounted(async() => { 
     const db = firebase.database();
-    const collection = db.ref('chats')
-    const data = await collection.once('value')
-    console.log(data.val());
+    state.collection = db.ref('chats')
+    const data = await state.collection.once('value')
+      state.chats =  data.val();
+
+    state.userId = firebase.auth().currentUser.uid;
+    // state.collection.on('value', (snapshot) => {
+    //   state.chats = snapshot.val()
+    // })
   
   })
+  function addMessage() {
+    const newChat = state.collection.push();
+    newChat.set({ userId: state.userId, message: state.message });
+    state.message = '';
+  }
+
+  return { state, addMessage }
 }
 }
 </script>
